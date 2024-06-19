@@ -1,0 +1,34 @@
+version: "2.1"
+
+services:
+  nginx:
+    image: linuxserver/nginx
+    container_name: nginx
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /home/user/appdata/nginx:/config
+      - ./index.php:/config/www/index.php
+    ports:
+      - 81:80
+      - 444:443
+    restart: unless-stopped
+
+  mariadb:
+    image: linuxserver/mariadb
+    container_name: mariadb
+    environment:
+      - PUID=1000
+      - MYSQL_DATABASE=mydata
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
+      - TZ=Europe/London
+    volumes:
+      - ./mysql/:/config
+      - ./InitDB.sql:/config/initdb.d/InitDB.sql
+    ports:
+      - 3306:3306
+    restart: unless-stopped
