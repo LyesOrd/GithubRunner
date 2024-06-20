@@ -22,7 +22,7 @@ jobs:
         run: sleep 15
 
       - name: Test application with curl
-        run: docker exec it nginx curl localhost:81/index.php
+        run: docker exec -it nginx curl localhost:80/index.php
 
       - name: Stop Docker Compose
         run: docker-compose down
