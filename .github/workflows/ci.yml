@@ -23,7 +23,7 @@ jobs:
              sleep 30
 
       - name: Test application with curl
-        run: curl -f http://localhost:81 || (echo "Failed to reach the web service" && exit 1)
+        run: curl -f http://localhost:81
 
       - name: Stop Docker Compose
         if: always()
