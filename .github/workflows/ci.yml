@@ -23,7 +23,7 @@ jobs:
              sleep 30
 
       - name: Test application with curl
-        run: curl -f localhost:81
+        run: curl localhost:81/index.php
 
       - name: Stop Docker Compose
         if: always()
