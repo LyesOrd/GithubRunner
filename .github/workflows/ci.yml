@@ -18,7 +18,7 @@ jobs:
       - name: Build and run Docker Compose
         run: docker-compose -f docker-compose.yml up -d
 
-      - name: Wait for services to be ready
+      - name: Wait for services
         run: echo "Waiting for services to be ready..."
              sleep 30
 
